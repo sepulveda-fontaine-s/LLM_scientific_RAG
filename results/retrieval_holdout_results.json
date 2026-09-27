@@ -1,0 +1,702 @@
+{
+  "dataset": "frozen_holdout",
+  "number_of_queries": 11,
+  "top_k": 5,
+  "candidate_k": 25,
+  "rrf_k": 60,
+  "aggregate": {
+    "dense": {
+      "mean_recall_at_5": 0.4090909090909091,
+      "mrr": 0.4393939393939394,
+      "mean_ndcg_at_5": 0.36670428043429604
+    },
+    "bm25": {
+      "mean_recall_at_5": 0.7045454545454546,
+      "mrr": 0.7424242424242425,
+      "mean_ndcg_at_5": 0.6232584492480977
+    },
+    "hybrid_rrf": {
+      "mean_recall_at_5": 0.5227272727272728,
+      "mrr": 0.7454545454545454,
+      "mean_ndcg_at_5": 0.5386439693300961
+    },
+    "hybrid_rrf_reranker": {
+      "mean_recall_at_5": 0.5681818181818182,
+      "mrr": 0.8181818181818182,
+      "mean_ndcg_at_5": 0.6022234722889025
+    }
+  },
+  "queries": [
+    {
+      "query": "Why does BM25 perform better than DPR on SQuAD despite DPR outperforming BM25 on most other QA datasets?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_3",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_4",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_2"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 0.5,
+            "ndcg_at_5": 0.38685280723454163
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_3",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_5"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.8503449055347546
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_3",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_4"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.8772153153380493
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_3",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_4",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_2_chunk_2"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How well does DPR generalize to different QA datasets without additional fine-tuning?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_5",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_9_chunk_3",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_3"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_5",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_4",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_9_chunk_3",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_3"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.8772153153380493
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_5",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_9_chunk_3",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_4",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_3"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_5",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_9_chunk_3",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_2_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_3"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What runtime and index-building trade-offs does DPR with FAISS have compared with BM25 using Lucene?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.9197207891481876
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_8_chunk_5",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_3",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_4"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_2",
+            "Retrieval-Augmented Generation for Knowledge-intensive NLP tasks.pdf_page_8_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_13_chunk_3",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_8_chunk_4"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_8_chunk_5",
+            "Retrieval-Augmented Generation for Knowledge-intensive NLP tasks.pdf_page_17_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_8_chunk_4"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_2_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_12_chunk_4",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_12_chunk_3"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Why can cross-attention be useful for reranking a small retrieved candidate set but not for full-corpus retrieval?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 0.0,
+            "reciprocal_rank": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_10_chunk_2",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_10_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_2_chunk_2"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 0.5,
+            "ndcg_at_5": 0.38685280723454163
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_10_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_3",
+            "Retrieval-Augmented Generation for Knowledge-intensive NLP tasks.pdf_page_18_chunk_4",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_10_chunk_1",
+            "Retrieval-Augmented Generation for Knowledge-intensive NLP tasks.pdf_page_4_chunk_4"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 0.0,
+            "reciprocal_rank": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_10_chunk_2",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_10_chunk_1",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_9_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_5"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "retrieved_chunk_ids": [
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_3",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_9_chunk_2",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_10_chunk_2",
+            "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_2_chunk_4",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_10_chunk_1"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How does ColBERT optimize the offline computation and storage of document embeddings during indexing?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 0.6666666666666666,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.6713860725233041
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_1",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_2_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_3",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_3"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 0.3333333333333333,
+            "reciprocal_rank": 0.3333333333333333,
+            "ndcg_at_5": 0.23463936301137822
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_3_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_6_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_1",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_2_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_3_chunk_6"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 0.3333333333333333,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.46927872602275644
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_1",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_2_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_3",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_6_chunk_2"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 0.3333333333333333,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.46927872602275644
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_1",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_3",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_6_chunk_1",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_3_chunk_4"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How does ColBERT perform end-to-end retrieval from a very large document collection using FAISS?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 0.0,
+            "reciprocal_rank": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_1_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_2_chunk_5",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_1",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_6_chunk_2"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 0.25,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.3903800499921017
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_5",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_6_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_3",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_3",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_3_chunk_1"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 0.25,
+            "reciprocal_rank": 0.2,
+            "ndcg_at_5": 0.15101961822780524
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_6_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_3",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_3",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_1_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_6"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 0.0,
+            "reciprocal_rank": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_1_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_1",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_2_chunk_5",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_3_chunk_6"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How does ColBERT compare with BERT-based rerankers in effectiveness, latency, and computational cost?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 0.3333333333333333,
+            "ndcg_at_5": 0.36331756126716835
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_2_chunk_5",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_5",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_1_chunk_2"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.5585075862632192
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_1_chunk_5",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_2_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_3",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_5"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.5855700749881525
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_5",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_5",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_2",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_1_chunk_1"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 0.75,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.787702056960637
+          },
+          "retrieved_chunk_ids": [
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_4",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_5",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_1_chunk_5",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_4_chunk_1",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_3"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Why does Sentence-BERT lose performance when evaluated on argument similarity topics that were not seen during training?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 0.0,
+            "reciprocal_rank": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "retrieved_chunk_ids": [
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_1",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_3",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_1",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_2"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 0.3333333333333333,
+            "ndcg_at_5": 0.5437713091520254
+          },
+          "retrieved_chunk_ids": [
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_8_chunk_4",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_3",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_4"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 0.0,
+            "reciprocal_rank": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "retrieved_chunk_ids": [
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_8_chunk_4",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_1",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_1"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "retrieved_chunk_ids": [
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_4",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_8_chunk_4",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_1",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_3"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How is Sentence-BERT trained and evaluated using Wikipedia section triplets?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 0.0,
+            "reciprocal_rank": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "retrieved_chunk_ids": [
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_5",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_1",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_3",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_3"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 0.5,
+            "ndcg_at_5": 0.6509209298071326
+          },
+          "retrieved_chunk_ids": [
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_6_chunk_3",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_6_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_6_chunk_1",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_1"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "retrieved_chunk_ids": [
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_6_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_5",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_7_chunk_3",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_1"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 0.0,
+            "reciprocal_rank": 0.0,
+            "ndcg_at_5": 0.0
+          },
+          "retrieved_chunk_ids": [
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_6_chunk_3",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_5",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_2",
+            "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_1"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What trade-offs arise when choosing the retrieval granularity and chunk size in a RAG system?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 0.3333333333333333,
+            "reciprocal_rank": 0.25,
+            "ndcg_at_5": 0.20210734650054757
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_1_chunk_5",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_1_chunk_4",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_3_chunk_2",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_7_chunk_4",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_5_chunk_1"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 0.6666666666666666,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.7039180890341347
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_7_chunk_4",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_18_chunk_8",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_1",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_5_chunk_5",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_12_chunk_1"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 0.6666666666666666,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.7653606369886217
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_7_chunk_4",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_1",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_5_chunk_5",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_3_chunk_2",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_12_chunk_1"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 0.6666666666666666,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.6508205185601091
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_7_chunk_4",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_6_chunk_1",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_18_chunk_8",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_5_chunk_6",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_1"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How can query expansion and sub-query decomposition improve retrieval for complex or ambiguous questions in RAG?",
+      "systems": {
+        "dense": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 0.25,
+            "ndcg_at_5": 0.2640681225725909
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_1_chunk_5",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_5_chunk_1",
+            "Retrieval-Augmented Generation for Knowledge-intensive NLP tasks.pdf_page_5_chunk_4",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_5",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_4_chunk_2"
+          ]
+        },
+        "bm25": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_5",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_6",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_11_chunk_2",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_14_chunk_3",
+            "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_3"
+          ]
+        },
+        "hybrid_rrf": {
+          "metrics": {
+            "recall_at_5": 0.5,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 0.6131471927654584
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_5",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_4_chunk_2",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_11_chunk_1",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_5_chunk_2",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_9_chunk_1"
+          ]
+        },
+        "hybrid_rrf_reranker": {
+          "metrics": {
+            "recall_at_5": 1.0,
+            "reciprocal_rank": 1.0,
+            "ndcg_at_5": 1.0
+          },
+          "retrieved_chunk_ids": [
+            "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_5",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_6",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_4_chunk_2",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_3_chunk_2",
+            "RAG_for_LLMs_ A_ Survey.pdf_page_11_chunk_1"
+          ]
+        }
+      }
+    }
+  ]
+}

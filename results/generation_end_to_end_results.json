@@ -1,0 +1,312 @@
+{
+  "mode": "end_to_end",
+  "aggregate": {
+    "number_of_cases": 6,
+    "mean_retrieval_recall_at_5": 0.5833333333333334,
+    "citation_valid_rate": 0.8333333333333334,
+    "numeric_grounding_valid_rate": 0.8333333333333334,
+    "grounded_rate": 0.16666666666666666,
+    "hard_guardrail_pass_rate": 0.8333333333333334,
+    "validation_status_counts": {
+      "validated": 1,
+      "validated_with_soft_warning": 4,
+      "rejected": 1
+    }
+  },
+  "cases": [
+    {
+      "query": "Why are in-batch negatives computationally efficient in DPR, and how does batch size affect retrieval performance?",
+      "expected_claims": [
+        "In-batch negative training reuses negative examples already present in the batch instead of creating new ones.",
+        "Retrieval accuracy consistently improves as the batch size grows."
+      ],
+      "oracle_chunk_ids": [
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_1",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_2"
+      ],
+      "retrieved_chunk_ids": [
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_3_chunk_5",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_2",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_2",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_5_chunk_1",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_1"
+      ],
+      "retrieved_relevant_chunk_ids": [
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_1",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_2"
+      ],
+      "retrieval_recall_at_5": 1.0,
+      "answer": "In-batch negatives are computationally efficient because they reuse computation by reusing gold passages from the same batch [1]. Batch size affects retrieval performance; increasing the batch size consistently improves accuracy [4].",
+      "answer_before_fail_closed": "In-batch negatives are computationally efficient because they reuse computation by reusing gold passages from the same batch [1]. Batch size affects retrieval performance; increasing the batch size consistently improves accuracy [4].",
+      "citations_valid": true,
+      "numeric_grounding_valid": true,
+      "grounded": false,
+      "hard_guardrails_passed": true,
+      "validation_status": "validated_with_soft_warning",
+      "groundedness_details": [
+        {
+          "sentence": "In-batch negatives are computationally efficient because they reuse computation by reusing gold passages from the same batch [1].",
+          "entailment_score": 0.9827812314033508,
+          "contradiction_score": 0.001311289961449802,
+          "neutral_score": 0.015907447785139084,
+          "best_evidence_span": "In particular, re-using gold passages from the same batch as negatives can make the computation efﬁcient while achiev- ing great performance. We discuss this approach below.",
+          "grounded": true
+        },
+        {
+          "sentence": "Batch size affects retrieval performance; increasing the batch size consistently improves accuracy [4].",
+          "entailment_score": 0.0007958758505992591,
+          "contradiction_score": 0.0037735984660685062,
+          "neutral_score": 0.9954304695129395,
+          "best_evidence_span": "Training Retriever Top-20 Top-100 NQ TriviaQA WQ TREC SQuAD NQ TriviaQA WQ TREC SQuAD None BM25 59.1 66.9 55.0 70.9 68.8 73.7 76.7 71.1 84.1 80.0 Single DPR 78.4 79.4 73.2 79.8 63.2 85.4 85.0 81.4 89.1 77.2 BM25 + DPR 76.6 79.8 71.0 85.2 71.5 83.8 84.5 80.5 92.7 81.3 Multi DPR 79.4 78.8 75.0 89.1 51.6 86.0 84.7 82.9 93.9 67.6 BM25 + DPR 78.0 79.9 74.7 88.5 66.2 83.9 84.4 82.3 94.1 78.6 Table 2: Top-20 & Top-100 retrieval accuracy on test sets, measured as the percentage of top 20/100 retrieved passages that contain the answer. Single and Multi denote that our Dense Passage Retriever (DPR) was trained using individial or combined training datasets (all the datasets excluding SQuAD).",
+          "grounded": false
+        }
+      ]
+    },
+    {
+      "query": "What runtime and indexing trade-offs does DPR with FAISS have compared with BM25 using Lucene?",
+      "expected_claims": [
+        "DPR with a FAISS in-memory index processed 995.0 questions per second while BM25 with Lucene processed 23.7 questions per second per CPU thread.",
+        "Computing dense embeddings and building the FAISS index are substantially more expensive offline than building the Lucene inverted index."
+      ],
+      "oracle_chunk_ids": [
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_2"
+      ],
+      "retrieved_chunk_ids": [
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_12_chunk_4",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_2_chunk_2",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_2",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_12_chunk_3"
+      ],
+      "retrieved_relevant_chunk_ids": [
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_2"
+      ],
+      "retrieval_recall_at_5": 1.0,
+      "answer": "The generated answer could not be validated against the retrieved evidence.",
+      "answer_before_fail_closed": "DPR with FAISS has a significantly faster runtime compared to BM25 using Lucene. DPR achieves a processing speed of 995.0 questions per second, returning top 100 passages per question, whereas BM25/Lucene processes only 23.7 questions per second per CPU thread [2]. However, the time required to build an FAISS index for dense vectors is longer than that for an inverted index using Lucene, taking approximately 8.8 hours on 8 GPUs, whereas building an inverted index using Lucene takes only about 30 minutes [4].",
+      "citations_valid": false,
+      "numeric_grounding_valid": false,
+      "grounded": false,
+      "hard_guardrails_passed": false,
+      "validation_status": "rejected",
+      "groundedness_details": [
+        {
+          "sentence": "DPR with FAISS has a significantly faster runtime compared to BM25 using Lucene.",
+          "entailment_score": 0.0,
+          "grounded": false
+        },
+        {
+          "sentence": "DPR achieves a processing speed of 995.0 questions per second, returning top 100 passages per question, whereas BM25/Lucene processes only 23.7 questions per second per CPU thread [2].",
+          "entailment_score": 0.002104943385347724,
+          "contradiction_score": 0.9524843692779541,
+          "neutral_score": 0.04541073366999626,
+          "best_evidence_span": "Our training batch size is set to 16, which effectively gives 1,600 passages per question to calculate retriever loss. The reader still uses 24 passages per question, which are selected",
+          "grounded": false
+        },
+        {
+          "sentence": "However, the time required to build an FAISS index for dense vectors is longer than that for an inverted index using Lucene, taking approximately 8.8 hours on 8 GPUs, whereas building an inverted index using Lucene takes only about 30 minutes [4].",
+          "entailment_score": 0.007087283302098513,
+          "contradiction_score": 0.020767942070961,
+          "neutral_score": 0.9721447825431824,
+          "best_evidence_span": "Com- puting dense embeddings on 21-million passages is resource intensive, but can be easily parallelized, taking roughly 8.8 hours on 8 GPUs. However, building the FAISS index on 21-million vectors on a single server takes 8.5 hours.",
+          "grounded": false
+        }
+      ]
+    },
+    {
+      "query": "How does ColBERT perform end-to-end retrieval from a large document collection using FAISS?",
+      "expected_claims": [
+        "ColBERT indexes document embeddings in FAISS while maintaining a mapping from each embedding to its document of origin.",
+        "The first retrieval stage performs vector-similarity searches for the query embeddings to obtain candidate documents.",
+        "The second stage exhaustively reranks only the candidate documents using ColBERT scoring."
+      ],
+      "oracle_chunk_ids": [
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_6",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_7",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_6_chunk_1"
+      ],
+      "retrieved_chunk_ids": [
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_1_chunk_2",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_9_chunk_1",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_2",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_2_chunk_5",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_3_chunk_6"
+      ],
+      "retrieved_relevant_chunk_ids": [],
+      "retrieval_recall_at_5": 0.0,
+      "answer": "ColBERT performs end-to-end retrieval from a large document collection using FAISS by leveraging its late interaction mechanism [3]. This approach allows ColBERT to pre-compute document representations offline, enabling efficient retrieval directly from the entire document collection [1].",
+      "answer_before_fail_closed": "ColBERT performs end-to-end retrieval from a large document collection using FAISS by leveraging its late interaction mechanism [3]. This approach allows ColBERT to pre-compute document representations offline, enabling efficient retrieval directly from the entire document collection [1].",
+      "citations_valid": true,
+      "numeric_grounding_valid": true,
+      "grounded": false,
+      "hard_guardrails_passed": true,
+      "validation_status": "validated_with_soft_warning",
+      "groundedness_details": [
+        {
+          "sentence": "ColBERT performs end-to-end retrieval from a large document collection using FAISS by leveraging its late interaction mechanism [3].",
+          "entailment_score": 0.0020605854224413633,
+          "contradiction_score": 0.4423198699951172,
+          "neutral_score": 0.5556195378303528,
+          "best_evidence_span": "Each model retrieves the top-1000 documents per query directly from the entire 8.8M document collection. retrieval (i.e., for methods with neural computations) but we use up to all four GPUs during indexing.",
+          "grounded": false
+        },
+        {
+          "sentence": "This approach allows ColBERT to pre-compute document representations offline, enabling efficient retrieval directly from the entire document collection [1].",
+          "entailment_score": 0.184172123670578,
+          "contradiction_score": 0.005121479742228985,
+          "neutral_score": 0.8107064366340637,
+          "best_evidence_span": "gaining the ability to pre-compute document representations oﬄine, considerably speeding up query processing. Beyond reducing the cost of re-ranking the documents retrieved by a traditional model, ColBERT’s pruning-friendly in- teraction mechanism enables leveraging vector-similarity indexes for end-to-end retrieval directly from a large document collection.",
+          "grounded": false
+        }
+      ]
+    },
+    {
+      "query": "How does ColBERT compare with BERT-based rerankers in latency and computational cost?",
+      "expected_claims": [
+        "ColBERT has substantially lower reranking latency and computational cost than BERT-based rerankers while remaining competitive in effectiveness.",
+        "The paper reports ColBERT as over 170 times cheaper in latency and 13,900 times cheaper in FLOPs than BERTbase."
+      ],
+      "oracle_chunk_ids": [
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_1",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_3",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_4"
+      ],
+      "retrieved_chunk_ids": [
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_4",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_5",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_5",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_4_chunk_1",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_3"
+      ],
+      "retrieved_relevant_chunk_ids": [
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_3",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_4"
+      ],
+      "retrieval_recall_at_5": 0.6666666666666666,
+      "answer": "ColBERT's re-ranking latency is slightly higher than non-BERT re-ranking models by 10s of milliseconds [2], primarily due to the time required for gathering and transferring document embeddings to the GPU [2].",
+      "answer_before_fail_closed": "ColBERT's re-ranking latency is slightly higher than non-BERT re-ranking models by 10s of milliseconds [2], primarily due to the time required for gathering and transferring document embeddings to the GPU [2].",
+      "citations_valid": true,
+      "numeric_grounding_valid": true,
+      "grounded": true,
+      "hard_guardrails_passed": true,
+      "validation_status": "validated",
+      "groundedness_details": [
+        {
+          "sentence": "ColBERT's re-ranking latency is slightly higher than non-BERT re-ranking models by 10s of milliseconds [2], primarily due to the time required for gathering and transferring document embeddings to the GPU [2].",
+          "entailment_score": 0.9964973330497742,
+          "contradiction_score": 0.0002011966280406341,
+          "neutral_score": 0.0033015068620443344,
+          "best_evidence_span": "of our proposed late interaction mech- anism, particularly when coupled with a powerful pre-trained LM like BERT. While ColBERT’s re-ranking latency is slightly higher than the non-BERT re-ranking models shown (i.e., by 10s of mil- liseconds), this diﬀerence is explained by the time it takes to gather, stack, and transfer the document embeddings to the GPU.",
+          "grounded": true
+        }
+      ]
+    },
+    {
+      "query": "Why does Sentence-BERT lose performance when evaluated on argument similarity topics not seen during training?",
+      "expected_claims": [
+        "Argument Facet Similarity requires arguments to express similar claims and similar reasoning.",
+        "In the cross-topic setting SBERT must map sentences from an unseen topic into a vector space without direct cross-sentence attention.",
+        "SBERT shows a performance drop of about 7 Spearman correlation points in the cross-topic evaluation."
+      ],
+      "oracle_chunk_ids": [
+        "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_3",
+        "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_4"
+      ],
+      "retrieved_chunk_ids": [
+        "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_4",
+        "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_2",
+        "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_8_chunk_4",
+        "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_1_chunk_1",
+        "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_2_chunk_3"
+      ],
+      "retrieved_relevant_chunk_ids": [
+        "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_4"
+      ],
+      "retrieval_recall_at_5": 0.5,
+      "answer": "Sentence-BERT loses performance when evaluated on argument similarity topics not seen during training because it must map individual sentences from an unseen topic to a vector space such that arguments with similar claims and reasons are close, which is a more challenging task compared to directly comparing sentences within the same topic [4].",
+      "answer_before_fail_closed": "Sentence-BERT loses performance when evaluated on argument similarity topics not seen during training because it must map individual sentences from an unseen topic to a vector space such that arguments with similar claims and reasons are close, which is a more challenging task compared to directly comparing sentences within the same topic [4].",
+      "citations_valid": true,
+      "numeric_grounding_valid": true,
+      "grounded": false,
+      "hard_guardrails_passed": true,
+      "validation_status": "validated_with_soft_warning",
+      "groundedness_details": [
+        {
+          "sentence": "Sentence-BERT loses performance when evaluated on argument similarity topics not seen during training because it must map individual sentences from an unseen topic to a vector space such that arguments with similar claims and reasons are close, which is a more challenging task compared to directly comparing sentences within the same topic [4].",
+          "entailment_score": 0.018912719562649727,
+          "contradiction_score": 0.08387082070112228,
+          "neutral_score": 0.8972164988517761,
+          "best_evidence_span": "This reduces the effort for ﬁnding the most similar pair from 65 hours with BERT / RoBERTa to about 5 sec- onds with SBERT, while maintaining the ac- curacy from BERT. We evaluate SBERT and SRoBERTa on com- mon STS tasks and transfer learning tasks, where it outperforms other state-of-the-art sentence",
+          "grounded": false
+        }
+      ]
+    },
+    {
+      "query": "What trade-offs arise when choosing chunk size in a RAG system?",
+      "expected_claims": [
+        "Larger chunks can preserve more context but introduce more noise, processing time, and cost.",
+        "Smaller chunks contain less noise but may fail to preserve all necessary context.",
+        "Small2Big retrieves small units and supplies surrounding sentences as larger context to the language model."
+      ],
+      "oracle_chunk_ids": [
+        "RAG_for_LLMs_ A_ Survey.pdf_page_7_chunk_4",
+        "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_1",
+        "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_2"
+      ],
+      "retrieved_chunk_ids": [
+        "RAG_for_LLMs_ A_ Survey.pdf_page_18_chunk_8",
+        "RAG_for_LLMs_ A_ Survey.pdf_page_3_chunk_2",
+        "RAG_for_LLMs_ A_ Survey.pdf_page_14_chunk_3",
+        "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_4",
+        "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_2"
+      ],
+      "retrieved_relevant_chunk_ids": [
+        "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_2"
+      ],
+      "retrieval_recall_at_5": 0.3333333333333333,
+      "answer": "The choice of chunk size in a RAG system involves balancing semantic completeness and context length [5]. Larger chunks capture more context but introduce more noise, increasing processing time and costs [5]. Conversely, smaller chunks provide less noise but may not fully convey necessary context [5]. Methods like recursive splits and sliding windows aim to merge globally related information across multiple retrieval processes, yet still struggle to find an optimal balance [5].",
+      "answer_before_fail_closed": "The choice of chunk size in a RAG system involves balancing semantic completeness and context length [5]. Larger chunks capture more context but introduce more noise, increasing processing time and costs [5]. Conversely, smaller chunks provide less noise but may not fully convey necessary context [5]. Methods like recursive splits and sliding windows aim to merge globally related information across multiple retrieval processes, yet still struggle to find an optimal balance [5].",
+      "citations_valid": true,
+      "numeric_grounding_valid": true,
+      "grounded": false,
+      "hard_guardrails_passed": true,
+      "validation_status": "validated_with_soft_warning",
+      "groundedness_details": [
+        {
+          "sentence": "The choice of chunk size in a RAG system involves balancing semantic completeness and context length [5].",
+          "entailment_score": 0.019355515018105507,
+          "contradiction_score": 0.5606579780578613,
+          "neutral_score": 0.4199864864349365,
+          "best_evidence_span": "Never- theless, these approaches still cannot strike a balance between semantic completeness and context length. Therefore, methods like Small2Big have been proposed, where sentences (small) are used as the retrieval unit, and the preceding and following sentences are provided as (big) context to LLMs [90].",
+          "grounded": false
+        },
+        {
+          "sentence": "Larger chunks capture more context but introduce more noise, increasing processing time and costs [5].",
+          "entailment_score": 0.9977989792823792,
+          "contradiction_score": 0.0002079654805129394,
+          "neutral_score": 0.001992993988096714,
+          "best_evidence_span": "1) Chunking Strategy: The most common method is to split the document into chunks on a fixed number of tokens (e.g., 100, 256, 512) [88]. Larger chunks can capture more context, but they also generate more noise, requiring longer processing time and higher costs.",
+          "grounded": true
+        },
+        {
+          "sentence": "Conversely, smaller chunks provide less noise but may not fully convey necessary context [5].",
+          "entailment_score": 0.9982447624206543,
+          "contradiction_score": 0.0005952318315394223,
+          "neutral_score": 0.0011600350262597203,
+          "best_evidence_span": "While smaller chunks may not fully convey the necessary context, they do have less noise. How- ever, chunks leads to truncation within sentences, prompting the optimization of a recursive splits and sliding window meth- ods, enabling layered retrieval by merging globally related information across multiple retrieval processes [89].",
+          "grounded": true
+        },
+        {
+          "sentence": "Methods like recursive splits and sliding windows aim to merge globally related information across multiple retrieval processes, yet still struggle to find an optimal balance [5].",
+          "entailment_score": 0.018814824521541595,
+          "contradiction_score": 0.975021481513977,
+          "neutral_score": 0.006163656245917082,
+          "best_evidence_span": "How- ever, chunks leads to truncation within sentences, prompting the optimization of a recursive splits and sliding window meth- ods, enabling layered retrieval by merging globally related information across multiple retrieval processes [89]. Never- theless, these approaches still cannot strike a balance between semantic completeness and context length.",
+          "grounded": false
+        }
+      ]
+    }
+  ]
+}

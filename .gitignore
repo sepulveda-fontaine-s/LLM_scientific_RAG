@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+
+# Local model weights
+models/**
+
+# Raw source documents
+data/raw/**
+
+# Generated retrieval artifacts
+data/processed/embeddings.npy
+data/processed/faiss.index
+
+# Runtime / experiment outputs
+*.out
+*.err
+*.log
+
+# SLURM-generated files
+job.*
+err.*
+
+# OS files
+.DS_Store
+Thumbs.db

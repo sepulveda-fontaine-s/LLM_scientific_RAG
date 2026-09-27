@@ -1,0 +1,225 @@
+{
+  "mode": "oracle_context",
+  "aggregate": {
+    "number_of_cases": 6,
+    "citation_valid_rate": 0.8333333333333334,
+    "numeric_grounding_valid_rate": 0.8333333333333334,
+    "grounded_rate": 0.16666666666666666,
+    "hard_guardrail_pass_rate": 0.6666666666666666,
+    "validation_status_counts": {
+      "validated": 1,
+      "validated_with_soft_warning": 3,
+      "rejected": 2
+    }
+  },
+  "cases": [
+    {
+      "query": "Why are in-batch negatives computationally efficient in DPR, and how does batch size affect retrieval performance?",
+      "expected_claims": [
+        "In-batch negative training reuses negative examples already present in the batch instead of creating new ones.",
+        "Retrieval accuracy consistently improves as the batch size grows."
+      ],
+      "oracle_chunk_ids": [
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_1",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_6_chunk_2"
+      ],
+      "answer": "In-batch negative training improves retrieval accuracy substantially [2]. Batch size growth contributes to better model performance by increasing the number of training examples through effective reuse of negative examples within the batch [2].",
+      "answer_before_fail_closed": "In-batch negative training improves retrieval accuracy substantially [2]. Batch size growth contributes to better model performance by increasing the number of training examples through effective reuse of negative examples within the batch [2].",
+      "citations_valid": true,
+      "numeric_grounding_valid": true,
+      "grounded": false,
+      "hard_guardrails_passed": true,
+      "validation_status": "validated_with_soft_warning",
+      "groundedness_details": [
+        {
+          "sentence": "In-batch negative training improves retrieval accuracy substantially [2].",
+          "entailment_score": 0.010365253314375877,
+          "contradiction_score": 0.057169653475284576,
+          "neutral_score": 0.9324650168418884,
+          "best_evidence_span": "These additional passages are used as negative passages for all questions in the same batch. We ﬁnd that adding a single BM25 negative passage improves the result substantially while adding two does not help further.",
+          "grounded": false
+        },
+        {
+          "sentence": "Batch size growth contributes to better model performance by increasing the number of training examples through effective reuse of negative examples within the batch [2].",
+          "entailment_score": 0.13640832901000977,
+          "contradiction_score": 0.0022583564277738333,
+          "neutral_score": 0.8613333106040955,
+          "best_evidence_span": "As a result, accuracy consis- tently improves as the batch size grows. Finally, we explore in-batch negative training with additional “hard” negative passages that have high BM25 scores given the question, but do not contain the answer string (the bottom block).",
+          "grounded": false
+        }
+      ]
+    },
+    {
+      "query": "What runtime and indexing trade-offs does DPR with FAISS have compared with BM25 using Lucene?",
+      "expected_claims": [
+        "DPR with a FAISS in-memory index processed 995.0 questions per second while BM25 with Lucene processed 23.7 questions per second per CPU thread.",
+        "Computing dense embeddings and building the FAISS index are substantially more expensive offline than building the Lucene inverted index."
+      ],
+      "oracle_chunk_ids": [
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_1",
+        "Dense Passage Retrieval for Open-Domain Question Answering.pdf_page_7_chunk_2"
+      ],
+      "answer": "The generated answer could not be validated against the retrieved evidence.",
+      "answer_before_fail_closed": "DPR using FAISS indexes can process 995.0 questions per second, returning top 100 passages per question [1], whereas BM25/Lucene processes 23.7 questions per second per CPU thread [1]. Building the FAISS index takes 8.5 hours on a single server, while building an inverted index using Lucene takes only about 30 minutes [1].",
+      "citations_valid": true,
+      "numeric_grounding_valid": false,
+      "grounded": false,
+      "hard_guardrails_passed": false,
+      "validation_status": "rejected",
+      "groundedness_details": [
+        {
+          "sentence": "DPR using FAISS indexes can process 995.0 questions per second, returning top 100 passages per question [1], whereas BM25/Lucene processes 23.7 questions per second per CPU thread [1].",
+          "entailment_score": 0.9946104288101196,
+          "contradiction_score": 0.0019022965570911765,
+          "neutral_score": 0.0034872929099947214,
+          "best_evidence_span": "With the help of FAISS in-memory index for real-valued vectors10, DPR can be made incredibly efﬁcient, processing 995.0 questions per second, returning top 100 pas- sages per question. In contrast, BM25/Lucene (im- plemented in Java, using ﬁle index) processes 23.7 questions per second per CPU thread.",
+          "grounded": true
+        },
+        {
+          "sentence": "Building the FAISS index takes 8.5 hours on a single server, while building an inverted index using Lucene takes only about 30 minutes [1].",
+          "entailment_score": 0.0017164478776976466,
+          "contradiction_score": 0.7254772186279297,
+          "neutral_score": 0.27280640602111816,
+          "best_evidence_span": "In contrast, BM25/Lucene (im- plemented in Java, using ﬁle index) processes 23.7 questions per second per CPU thread. On the other hand, the time required for building an index for dense vectors is much longer.",
+          "grounded": false
+        }
+      ]
+    },
+    {
+      "query": "How does ColBERT perform end-to-end retrieval from a large document collection using FAISS?",
+      "expected_claims": [
+        "ColBERT indexes document embeddings in FAISS while maintaining a mapping from each embedding to its document of origin.",
+        "The first retrieval stage performs vector-similarity searches for the query embeddings to obtain candidate documents.",
+        "The second stage exhaustively reranks only the candidate documents using ColBERT scoring."
+      ],
+      "oracle_chunk_ids": [
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_6",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_5_chunk_7",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_6_chunk_1"
+      ],
+      "answer": "ColBERT uses late interaction [2] to perform end-to-end retrieval from a large document collection using FAISS [1].",
+      "answer_before_fail_closed": "ColBERT uses late interaction [2] to perform end-to-end retrieval from a large document collection using FAISS [1].",
+      "citations_valid": true,
+      "numeric_grounding_valid": true,
+      "grounded": true,
+      "hard_guardrails_passed": true,
+      "validation_status": "validated",
+      "groundedness_details": [
+        {
+          "sentence": "ColBERT uses late interaction [2] to perform end-to-end retrieval from a large document collection using FAISS [1].",
+          "entailment_score": 0.8750782012939453,
+          "contradiction_score": 0.05303889140486717,
+          "neutral_score": 0.07188287377357483,
+          "best_evidence_span": "Instead of apply- ing MaxSim between one of the query embeddings and all of one document’s embeddings, we can use fast vector-similarity data structures to eﬃciently conduct this search between the query embedding and all document embeddings across the full collec- tion. For this, we employ an oﬀ-the-shelf library for large-scale vector-similarity search, namely faiss [15] from Facebook.4In par- ticular, at the end of oﬄine indexing (§3.4), we maintain a mapping from each embedding to its document of origin and then index all document embeddings into faiss.",
+          "grounded": true
+        }
+      ]
+    },
+    {
+      "query": "How does ColBERT compare with BERT-based rerankers in latency and computational cost?",
+      "expected_claims": [
+        "ColBERT has substantially lower reranking latency and computational cost than BERT-based rerankers while remaining competitive in effectiveness.",
+        "The paper reports ColBERT as over 170 times cheaper in latency and 13,900 times cheaper in FLOPs than BERTbase."
+      ],
+      "oracle_chunk_ids": [
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_1",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_3",
+        "ColBERT_ Eicient and Eective Passage Search via.pdf_page_7_chunk_4"
+      ],
+      "answer": "ColBERT has a re-ranking latency of 61 ms [1], which is significantly lower than the 10,700 ms for BERTbase [2]. Additionally, ColBERT incurs 7B FLOPs per query [1], compared to 97T for BERTbase [2].",
+      "answer_before_fail_closed": "ColBERT has a re-ranking latency of 61 ms [1], which is significantly lower than the 10,700 ms for BERTbase [2]. Additionally, ColBERT incurs 7B FLOPs per query [1], compared to 97T for BERTbase [2].",
+      "citations_valid": true,
+      "numeric_grounding_valid": true,
+      "grounded": false,
+      "hard_guardrails_passed": true,
+      "validation_status": "validated_with_soft_warning",
+      "groundedness_details": [
+        {
+          "sentence": "ColBERT has a re-ranking latency of 61 ms [1], which is significantly lower than the 10,700 ms for BERTbase [2].",
+          "entailment_score": 0.009481269866228104,
+          "contradiction_score": 0.21925202012062073,
+          "neutral_score": 0.7712666988372803,
+          "best_evidence_span": "To begin with, we notice the fast progress from KNRM in 2017 to the BERT-based models in 2019, manifesting itself in over 16% increase",
+          "grounded": false
+        },
+        {
+          "sentence": "Additionally, ColBERT incurs 7B FLOPs per query [1], compared to 97T for BERTbase [2].",
+          "entailment_score": 0.9498210549354553,
+          "contradiction_score": 0.015172019600868225,
+          "neutral_score": 0.03500692918896675,
+          "best_evidence_span": "Method MRR@10 (Dev) MRR@10 (Eval) Re-ranking Latency (ms) FLOPs/query BM25 (oﬃcial) 16.7 16.5 - - KNRM 19.8 19.8 3 592M (0.085×) Duet 24.3 24.5 22 159B (23×) fastText+ConvKNRM 29.0 27.7 28 78B (11×) BERTbase [25] 34.7 - 10,700 97T (13,900×) BERTbase (our training) 36.0 - 10,700 97T (13,900×) BERTlarge [25] 36.5 35.9 32,900 340T (48,600×) ColBERT (over BERTbase) 34.9 34.9 61 7B (1×) Table 1: “Re-ranking” results on MS MARCO. Each neural model re-ranks the oﬃcial top-1000 results produced by BM25.",
+          "grounded": true
+        }
+      ]
+    },
+    {
+      "query": "Why does Sentence-BERT lose performance when evaluated on argument similarity topics not seen during training?",
+      "expected_claims": [
+        "Argument Facet Similarity requires arguments to express similar claims and similar reasoning.",
+        "In the cross-topic setting SBERT must map sentences from an unseen topic into a vector space without direct cross-sentence attention.",
+        "SBERT shows a performance drop of about 7 Spearman correlation points in the cross-topic evaluation."
+      ],
+      "oracle_chunk_ids": [
+        "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_3",
+        "Sentence_BERT_ Sentence Embeddings using Siamese BERT-Networks.pdf_page_5_chunk_4"
+      ],
+      "answer": "SBERT performs poorly on argument similarity tasks not seen during training [2].\nThis is due to SBERT's difficulty in mapping unseen topics into a vector space where arguments with similar claims and reasoning are close [2].",
+      "answer_before_fail_closed": "SBERT performs poorly on argument similarity tasks not seen during training [2].\nThis is due to SBERT's difficulty in mapping unseen topics into a vector space where arguments with similar claims and reasoning are close [2].",
+      "citations_valid": true,
+      "numeric_grounding_valid": true,
+      "grounded": false,
+      "hard_guardrails_passed": true,
+      "validation_status": "validated_with_soft_warning",
+      "groundedness_details": [
+        {
+          "sentence": "SBERT performs poorly on argument similarity tasks not seen during training [2].",
+          "entailment_score": 0.0044678086414933205,
+          "contradiction_score": 0.01077563688158989,
+          "neutral_score": 0.9847565293312073,
+          "best_evidence_span": "This is a much more challenging task, which appears to re- quire more than just two topics for training to work on-par with BERT. 4.4 Wikipedia Sections Distinction Dor et al.",
+          "grounded": false
+        },
+        {
+          "sentence": "This is due to SBERT's difficulty in mapping unseen topics into a vector space where arguments with similar claims and reasoning are close [2].",
+          "entailment_score": 0.9501426219940186,
+          "contradiction_score": 0.0006269538425840437,
+          "neutral_score": 0.04923037439584732,
+          "best_evidence_span": "word-by-word comparison), while SBERT must map individual sentences from an unseen topic to a vector space such that arguments with similar claims and reasons are close. This is a much more challenging task, which appears to re- quire more than just two topics for training to work on-par with BERT.",
+          "grounded": true
+        }
+      ]
+    },
+    {
+      "query": "What trade-offs arise when choosing chunk size in a RAG system?",
+      "expected_claims": [
+        "Larger chunks can preserve more context but introduce more noise, processing time, and cost.",
+        "Smaller chunks contain less noise but may fail to preserve all necessary context.",
+        "Small2Big retrieves small units and supplies surrounding sentences as larger context to the language model."
+      ],
+      "oracle_chunk_ids": [
+        "RAG_for_LLMs_ A_ Survey.pdf_page_7_chunk_4",
+        "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_1",
+        "RAG_for_LLMs_ A_ Survey.pdf_page_8_chunk_2"
+      ],
+      "answer": "The generated answer could not be validated against the retrieved evidence.",
+      "answer_before_fail_closed": "Choosing chunk size in a RAG system involves trade-offs between capturing more context with larger chunks, which can lead to higher processing time and costs, and having less noise with smaller chunks, which may not fully convey the necessary context. Larger chunks can capture more context but introduce more noise, while smaller chunks reduce noise but may lack sufficient context.",
+      "citations_valid": false,
+      "numeric_grounding_valid": true,
+      "grounded": false,
+      "hard_guardrails_passed": false,
+      "validation_status": "rejected",
+      "groundedness_details": [
+        {
+          "sentence": "Choosing chunk size in a RAG system involves trade-offs between capturing more context with larger chunks, which can lead to higher processing time and costs, and having less noise with smaller chunks, which may not fully convey the necessary context.",
+          "entailment_score": 0.0,
+          "grounded": false
+        },
+        {
+          "sentence": "Larger chunks can capture more context but introduce more noise, while smaller chunks reduce noise but may lack sufficient context.",
+          "entailment_score": 0.0,
+          "grounded": false
+        }
+      ]
+    }
+  ]
+}

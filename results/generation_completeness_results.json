@@ -1,0 +1,170 @@
+{
+  "mode": "oracle_generation_completeness",
+  "aggregate": {
+    "total_expected_claims": 15,
+    "total_covered_claims": 5,
+    "expected_claim_coverage": 0.3333333333333333,
+    "entailment_threshold": 0.7
+  },
+  "cases": [
+    {
+      "query": "Why are in-batch negatives computationally efficient in DPR, and how does batch size affect retrieval performance?",
+      "generated_answer": "In-batch negative training improves retrieval accuracy substantially . Batch size growth contributes to better model performance by increasing the number of training examples through effective reuse of negative examples within the batch .",
+      "covered_claims": 0,
+      "total_expected_claims": 2,
+      "claim_coverage": 0.0,
+      "claim_results": [
+        {
+          "expected_claim": "In-batch negative training reuses negative examples already present in the batch instead of creating new ones.",
+          "entailment_score": 0.0032721711322665215,
+          "contradiction_score": 0.0060255881398916245,
+          "neutral_score": 0.9907021522521973,
+          "covered": false
+        },
+        {
+          "expected_claim": "Retrieval accuracy consistently improves as the batch size grows.",
+          "entailment_score": 0.01308708917349577,
+          "contradiction_score": 0.00035158058744855225,
+          "neutral_score": 0.9865613579750061,
+          "covered": false
+        }
+      ]
+    },
+    {
+      "query": "What runtime and indexing trade-offs does DPR with FAISS have compared with BM25 using Lucene?",
+      "generated_answer": "DPR using FAISS indexes can process 995.0 questions per second, returning top 100 passages per question , whereas BM25/Lucene processes 23.7 questions per second per CPU thread . Building the FAISS index takes 8.5 hours on a single server, while building an inverted index using Lucene takes only about 30 minutes .",
+      "covered_claims": 1,
+      "total_expected_claims": 2,
+      "claim_coverage": 0.5,
+      "claim_results": [
+        {
+          "expected_claim": "DPR with a FAISS in-memory index processed 995.0 questions per second while BM25 with Lucene processed 23.7 questions per second per CPU thread.",
+          "entailment_score": 0.7407053709030151,
+          "contradiction_score": 0.03411378711462021,
+          "neutral_score": 0.22518087923526764,
+          "covered": true
+        },
+        {
+          "expected_claim": "Computing dense embeddings and building the FAISS index are substantially more expensive offline than building the Lucene inverted index.",
+          "entailment_score": 0.0006184332305565476,
+          "contradiction_score": 0.003938118927180767,
+          "neutral_score": 0.9954433441162109,
+          "covered": false
+        }
+      ]
+    },
+    {
+      "query": "How does ColBERT perform end-to-end retrieval from a large document collection using FAISS?",
+      "generated_answer": "ColBERT uses late interaction  to perform end-to-end retrieval from a large document collection using FAISS .",
+      "covered_claims": 0,
+      "total_expected_claims": 3,
+      "claim_coverage": 0.0,
+      "claim_results": [
+        {
+          "expected_claim": "ColBERT indexes document embeddings in FAISS while maintaining a mapping from each embedding to its document of origin.",
+          "entailment_score": 0.057635653764009476,
+          "contradiction_score": 0.0019212326733395457,
+          "neutral_score": 0.9404431581497192,
+          "covered": false
+        },
+        {
+          "expected_claim": "The first retrieval stage performs vector-similarity searches for the query embeddings to obtain candidate documents.",
+          "entailment_score": 0.00014031125465407968,
+          "contradiction_score": 0.9921625256538391,
+          "neutral_score": 0.0076972367241978645,
+          "covered": false
+        },
+        {
+          "expected_claim": "The second stage exhaustively reranks only the candidate documents using ColBERT scoring.",
+          "entailment_score": 5.820841761305928e-05,
+          "contradiction_score": 0.9917851686477661,
+          "neutral_score": 0.008156665600836277,
+          "covered": false
+        }
+      ]
+    },
+    {
+      "query": "How does ColBERT compare with BERT-based rerankers in latency and computational cost?",
+      "generated_answer": "ColBERT has a re-ranking latency of 61 ms , which is significantly lower than the 10,700 ms for BERTbase . Additionally, ColBERT incurs 7B FLOPs per query , compared to 97T for BERTbase .",
+      "covered_claims": 0,
+      "total_expected_claims": 2,
+      "claim_coverage": 0.0,
+      "claim_results": [
+        {
+          "expected_claim": "ColBERT has substantially lower reranking latency and computational cost than BERT-based rerankers while remaining competitive in effectiveness.",
+          "entailment_score": 0.0007539481739513576,
+          "contradiction_score": 0.00013924371160101146,
+          "neutral_score": 0.9991068243980408,
+          "covered": false
+        },
+        {
+          "expected_claim": "The paper reports ColBERT as over 170 times cheaper in latency and 13,900 times cheaper in FLOPs than BERTbase.",
+          "entailment_score": 0.0010513176675885916,
+          "contradiction_score": 0.9851255416870117,
+          "neutral_score": 0.013823113404214382,
+          "covered": false
+        }
+      ]
+    },
+    {
+      "query": "Why does Sentence-BERT lose performance when evaluated on argument similarity topics not seen during training?",
+      "generated_answer": "SBERT performs poorly on argument similarity tasks not seen during training .\nThis is due to SBERT's difficulty in mapping unseen topics into a vector space where arguments with similar claims and reasoning are close .",
+      "covered_claims": 2,
+      "total_expected_claims": 3,
+      "claim_coverage": 0.6666666666666666,
+      "claim_results": [
+        {
+          "expected_claim": "Argument Facet Similarity requires arguments to express similar claims and similar reasoning.",
+          "entailment_score": 0.971282422542572,
+          "contradiction_score": 0.0023132581263780594,
+          "neutral_score": 0.026404252275824547,
+          "covered": true
+        },
+        {
+          "expected_claim": "In the cross-topic setting SBERT must map sentences from an unseen topic into a vector space without direct cross-sentence attention.",
+          "entailment_score": 0.8034197688102722,
+          "contradiction_score": 0.005666978191584349,
+          "neutral_score": 0.19091325998306274,
+          "covered": true
+        },
+        {
+          "expected_claim": "SBERT shows a performance drop of about 7 Spearman correlation points in the cross-topic evaluation.",
+          "entailment_score": 0.00024152887635864317,
+          "contradiction_score": 0.00019592275202739984,
+          "neutral_score": 0.9995625615119934,
+          "covered": false
+        }
+      ]
+    },
+    {
+      "query": "What trade-offs arise when choosing chunk size in a RAG system?",
+      "generated_answer": "Choosing chunk size in a RAG system involves trade-offs between capturing more context with larger chunks, which can lead to higher processing time and costs, and having less noise with smaller chunks, which may not fully convey the necessary context. Larger chunks can capture more context but introduce more noise, while smaller chunks reduce noise but may lack sufficient context.",
+      "covered_claims": 2,
+      "total_expected_claims": 3,
+      "claim_coverage": 0.6666666666666666,
+      "claim_results": [
+        {
+          "expected_claim": "Larger chunks can preserve more context but introduce more noise, processing time, and cost.",
+          "entailment_score": 0.9843904376029968,
+          "contradiction_score": 0.010363922454416752,
+          "neutral_score": 0.005245610140264034,
+          "covered": true
+        },
+        {
+          "expected_claim": "Smaller chunks contain less noise but may fail to preserve all necessary context.",
+          "entailment_score": 0.9930866360664368,
+          "contradiction_score": 0.002332178642973304,
+          "neutral_score": 0.0045811184681952,
+          "covered": true
+        },
+        {
+          "expected_claim": "Small2Big retrieves small units and supplies surrounding sentences as larger context to the language model.",
+          "entailment_score": 0.3765980303287506,
+          "contradiction_score": 0.05023081600666046,
+          "neutral_score": 0.5731711387634277,
+          "covered": false
+        }
+      ]
+    }
+  ]
+}

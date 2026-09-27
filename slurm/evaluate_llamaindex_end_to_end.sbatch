@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#SBATCH --job-name=li_e2e_eval
+#SBATCH --partition=GPU
+#SBATCH --qos=gpu
+#SBATCH --nodelist=g-0
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=72G
+#SBATCH --gres=gpu:1
+#SBATCH --time=00:20:00
+#SBATCH --output=li_e2e_%j.out
+#SBATCH --error=li_e2e_%j.err
+
+set -e
+
+cd "$SLURM_SUBMIT_DIR"
+
+source .venv/bin/activate
+
+export OMP_NUM_THREADS=${SLURM_CPUS_ON_NODE}
+
+python scripts/evaluate_llamaindex_end_to_end.py

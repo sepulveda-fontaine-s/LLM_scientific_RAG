@@ -1,0 +1,30 @@
+[project]
+
+name = "llm-rag"
+version = "0.1.0"
+description = "Local RAG system with hybrid retrieval, reranking, grounded generation, evaluation, FastAPI serving and Streamlit frontend"requires-python = ">=3.11"
+
+dependencies = [
+    "pymupdf>=1.28,<2",
+    "numpy",
+    "sentence-transformers",
+    "rank-bm25",
+    "faiss-cpu>=1.8,<2",
+    "llama-index-core>=0.14.24,<0.15",
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.30,<1",
+    "pytest>=8,<10",
+    "httpx>=0.27,<1",
+    "streamlit>=1.40,<2",
+    "transformers>=5.16,<6",
+]
+
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: tests that require project models, retrieval artifacts, or heavier runtime resources",
+]
