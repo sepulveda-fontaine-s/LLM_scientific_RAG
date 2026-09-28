@@ -2,7 +2,8 @@
 
 name = "llm-rag"
 version = "0.1.0"
-description = "Local RAG system with hybrid retrieval, reranking, grounded generation, evaluation, FastAPI serving and Streamlit frontend"requires-python = ">=3.11"
+description = "Local RAG system with hybrid retrieval, reranking, grounded generation, evaluation, FastAPI serving and Streamlit frontend"
+requires-python = ">=3.11"
 
 dependencies = [
     "pymupdf>=1.28,<2",
